@@ -313,6 +313,7 @@ export default {
       isStudent: false,
       currentInput: '',
       currentInputCount: 0,
+      askEmailRe: /what(\'s| is) my email/i,
     };
   },
   head() {
@@ -758,7 +759,17 @@ export default {
           newObj = JSON.parse(JSON.stringify(message));
           newObj.data.text = 'transfer support';
         }
-        this.avaNormal(newObj);
+        
+        if (this.feedbackEmail && this.askEmailRe.test(this.currentInput)) {
+            this.addResponseMessage(this.feedbackEmail, "text", [
+              "List my tickets",
+              "Talk to an agent"
+            ]);
+        }
+        else {
+          this.avaNormal(newObj);
+        }
+        
       }
     },
     avaReopen() {
