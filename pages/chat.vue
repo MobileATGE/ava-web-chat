@@ -765,6 +765,7 @@ export default {
               "List my tickets",
               "Talk to an agent"
             ]);
+            this.showTypingIndicator = "";
         }
         else {
           this.avaNormal(newObj);
