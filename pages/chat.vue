@@ -575,20 +575,10 @@ export default {
           ]);
         });
       } else if (messages[0]) {
-
-        console.log('this.feedbackEmail=', this.feedbackEmail)
-        console.log('this.currentInput=', this.currentInput)
-
-        if (this.feedbackEmail && this.askEmailRe.test(this.currentInput)) {
-            this.addResponseMessage(`Your Chamberlain email is ${this.feedbackEmail}. ${messages[0].message[0]}`, "text");
-        }
-        else {
-          this.addResponseMessage(messages[0].message[0], data.type, [
-            "Help!",
-            "Talk to an agent!"
-          ]);
-        }
-
+        this.addResponseMessage(messages[0].message[0], data.type, [
+          "Help!",
+          "Talk to an agent!"
+        ]);
       } else if (data.type === "html") {
         // do nothing
       } else {
@@ -770,7 +760,16 @@ export default {
           newObj.data.text = 'transfer support';
         }
 
-        this.avaNormal(newObj);        
+        this.avaNormal(newObj);
+
+        // if (this.feedbackEmail && this.askEmailRe.test(this.currentInput)) {
+        //     this.addResponseMessage(`Your Chamberlain email is ${this.feedbackEmail}.`, "text");
+        //     this.showTypingIndicator = "";
+        // }
+        // else {
+        //   this.avaNormal(newObj);
+        // }
+        
       }
     },
     avaReopen() {
