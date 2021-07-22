@@ -576,6 +576,9 @@ export default {
         });
       } else if (messages[0]) {
 
+        console.log('this.feedbackEmail=', this.feedbackEmail)
+        console.log('this.currentInput=', this.currentInput)
+
         if (this.feedbackEmail && this.askEmailRe.test(this.currentInput)) {
             this.addResponseMessage(`Your Chamberlain email is ${this.feedbackEmail}. ${messages[0].message[0]}`, "text");
         }
